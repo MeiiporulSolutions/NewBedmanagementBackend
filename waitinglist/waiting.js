@@ -146,4 +146,4 @@ const WaitGet = asyncHandler(async(req,res,next)=>{
     throw new Error("Invalid Patient Not Found");
 }
 })
-module.exports = { addWaitingEntry,PriorityUpdate,BedAssignUpdate,WaitGet };
+module.exports = { addWaitingEntry,PriorityUpdate,BedAssignUpdate,WaitGet};
