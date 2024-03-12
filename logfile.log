@@ -401,3 +401,9 @@
 2024-03-01T14:02:10.499Z - info: MongoDB connected
 2024-03-02T10:02:19.216Z - info: Server is running on port 4000
 2024-03-02T10:02:19.947Z - info: MongoDB connected
+2024-03-12T18:00:07.662Z - info: Server is running on port 4000
+2024-03-12T18:00:09.375Z - info: MongoDB connected
+2024-03-12T18:01:35.052Z - error: Invalid Patient Not Found
+2024-03-12T18:07:48.651Z - info: Server is running on port 4000
+2024-03-12T18:07:48.759Z - info: MongoDB connected
+2024-03-12T18:08:00.972Z - error: Invalid Patient Not Found

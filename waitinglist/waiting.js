@@ -139,12 +139,11 @@ const BedAssignUpdate = asyncHandler(async (req, res) => {
 const WaitGet = asyncHandler(async(req,res,next)=>{
    const wait = await Waiting.find({},'-_id WaitlistEntryfields.patientName WaitlistEntryfields.age WaitlistEntryfields.gender WaitlistEntryfields.priority WaitlistEntryfields.admittingDoctors WaitlistEntryfields.admissionDate')
    
-   if(!wait){
-    const Error = new Error("Patient Not Found")
-    res.status(400)
-    throw error
-   }
-  
-   res.status(201).json(wait)
+   if (wait.length > 0) {
+    res.json(wait);
+} else if (wait.length === 0) {
+    res.status(404);
+    throw new Error("Invalid Patient Not Found");
+}
 })
 module.exports = { addWaitingEntry,PriorityUpdate,BedAssignUpdate,WaitGet };

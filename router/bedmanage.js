@@ -10,6 +10,7 @@ const { paagHandler, wardOccup, availablebed,bedAvailabilityBoard,getAdmissionDi
 const {patientCare}=require('../dashboard/dash')
 const {Dash7,Dash8,Dash9,Dash10,Dash11,Dash12}=require('../dashboard/dashlast')
 const {addWaitingEntry,PriorityUpdate,BedAssignUpdate,WaitGet}=require('../waitinglist/waiting')
+
 // POST endpoint to add beds
 router.post('/adbeds1', addBeds);
 //admit router:
@@ -24,15 +25,16 @@ router.get('/patientGet',PatientGet)
 router.get('/bedGet', bedGet)
 router.get('/transferGet', transferGet)
 
-//2:
+//dashboard2:
 router.get('/wardoccupancys',wardOccup)
 
-//3:
+//dashboard3:
 router.get('/realtimeavail',availablebed)
 
 //dashboard4:
 
 router.get('/paaG', paagHandler)
+
 //dashbpard 5:
 router.get('/admdis', getAdmissionDischarge)
 //dashboard 6:
