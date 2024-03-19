@@ -1,11 +1,8 @@
-
-
-
 const asyncHandler = require('express-async-handler');
 const moment = require('moment')
 const Patient = require('../model/patient')
 const Bed = require('../model/bed')
-const errorHandler = require('../middleware/errorhandler');
+const { validationResult } = require('express-validator');
 const logger = require('../logger'); // Assuming the logger is defined in a separate file
 
 /**
@@ -196,81 +193,84 @@ const generateRandomString = (length) => {
   
  
 // POST endpoint to admit a patient with readmission rate calculation
-const admitPatient = asyncHandler(async (req, res,next) => {
-    const {
-        patientName, age, gender, contactno, wardId, wardName, bedNumber, medicalAcuity,
-        admittingDoctors, admissionDate, admissionTime, assignedNurse, tasks,
-        address, abhaNo, infectionStatus,
-    } = req.body;
+const admitPatient = asyncHandler(async (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+  }
 
-    // Calculate risk score based on medical acuity
-    const riskScore = calculateRiskScore(medicalAcuity);
+  const {
+      patientName, age, gender, contactno, wardId, wardName, bedNumber, medicalAcuity,
+      admittingDoctors, admissionDate, admissionTime, assignedNurse, tasks,
+      address, abhaNo, infectionStatus,
+  } = req.body;
 
-    // Ensure admissionDate is today or in the future
-    const now = moment().startOf('day');
-    const selectedDate = moment(admissionDate, 'DD-MM-YYYY').startOf('day');
+  // Calculate risk score based on medical acuity
+  const riskScore = calculateRiskScore(medicalAcuity);
 
-    if (!selectedDate.isValid() || selectedDate.isBefore(now)) {
-        const error = new Error("Admission date must be a valid date and today or a future date");
-        return next({ statusCode: 400 , message: "Invalid admission date"}); // Pass error to next middleware with status code 404
+  // Ensure admissionDate is today or in the future
+  const now = moment().startOf('day');
+  const selectedDate = moment(admissionDate, 'DD-MM-YYYY').startOf('day');
 
-    }
+  if (!selectedDate.isValid() || selectedDate.isBefore(now)) {
+      const error = new Error("Admission date must be a valid date and today or a future date");
+      return next({ statusCode: 400, message: "Invalid admission date" }); // Pass error to next middleware with status code 404
+  }
 
-    // Check if the patient has been readmitted based on contact number
-    const readmitted = readmittedPatients.has(contactno);
+  // Check if the patient has been readmitted based on contact number
+  const readmitted = readmittedPatients.has(contactno);
 
-    // Automatically generate a unique patient ID
-    const patientId = generatePatientID();
+  // Automatically generate a unique patient ID
+  const patientId = generatePatientID();
 
-    // Create a new Patient document with readmission flag
-    const newPatient = new Patient({
-        patientName, age, gender, contactno, wardId, patientId, wardName, bedNumber,
-        medicalAcuity, admittingDoctors, admissionDate, admissionTime,
-        assignedNurse, abhaNo, address, tasks, riskScore, infectionStatus, readmitted,
-    });
+  // Create a new Patient document with readmission flag
+  const newPatient = new Patient({
+      patientName, age, gender, contactno, wardId, patientId, wardName, bedNumber,
+      medicalAcuity, admittingDoctors, admissionDate, admissionTime,
+      assignedNurse, abhaNo, address, tasks, riskScore, infectionStatus, readmitted,
+  });
 
-    // Check if the specified ward and bed exist
-    const bed = await Bed.findOne({
-        'wards.wardId': wardId,
-        'wards.beds.bedNumber': bedNumber
-    });
-    if (!bed) {
+  // Check if the specified ward and bed exist
+  const bed = await Bed.findOne({
+      'wards.wardId': wardId,
+      'wards.beds.bedNumber': bedNumber
+  });
+  if (!bed) {
       const error = new Error("Ward or bed does not exist");
       logger.error('Ward or bed does not exist', { error: error.message }); // Log the error
       return next({ statusCode: 404, message: "Ward or bed does not exist" }); // Pass error to next middleware with status code 404
   }
-    // Check if the bed is available
-    const selectedBed = bed.wards.find(wardItem => wardItem.wardId === wardId).beds.find(bedItem => bedItem.bedNumber === bedNumber);
+  // Check if the bed is available
+  const selectedBed = bed.wards.find(wardItem => wardItem.wardId === wardId).beds.find(bedItem => bedItem.bedNumber === bedNumber);
 
-    if (selectedBed.status === 'occupied') {
-        const error = new Error("Selected bed is already occupied.");
-        return next({ statusCode: 404, message: "Selected bed is already occupied" }); // Pass error to next middleware with status code 404
+  if (selectedBed.status === 'occupied') {
+      const error = new Error("Selected bed is already occupied.");
+      return next({ statusCode: 404, message: "Selected bed is already occupied" }); // Pass error to next middleware with status code 404
+  }
 
-    }
+  // Save the patient
+  const savedPatient = await newPatient.save();
 
-    // Save the patient
-    const savedPatient = await newPatient.save();
+  // Mark the bed as occupied in the bed collection
+  selectedBed.status = 'occupied';
+  selectedBed.patientId = patientId;
 
-    // Mark the bed as occupied in the bed collection
-    selectedBed.status = 'occupied';
-    selectedBed.patientId = patientId;
+  // Save changes to the bed data
+  await bed.save();
 
-    // Save changes to the bed data
-    await bed.save();
+  // Add the contact number to the readmittedPatients set
+  readmittedPatients.add(contactno);
 
-    // Add the contact number to the readmittedPatients set
-    readmittedPatients.add(contactno);
+  // Calculate infection rate
+  const infectionRate = await calculateInfectionRate();
 
-    // Calculate infection rate
-    const infectionRate = await calculateInfectionRate();
+  logger.info('Patient admitted successfully'); // Log successful admission
 
-    logger.info('Patient admitted successfully'); // Log successful admission
-
-    res.status(201).json({ patient: savedPatient, infectionRate });
-    
+  res.status(201).json({ patient: savedPatient, infectionRate });
 });
+
 //patient get:
-const PatientGet = asyncHandler(async (req, res, next) => {
+const PatientGet = asyncHandler(async (req, res) => {
   const PatientBeds = await Patient.find();
   if (PatientBeds.length > 0) {
       res.json(PatientBeds);

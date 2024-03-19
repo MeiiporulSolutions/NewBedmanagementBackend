@@ -2,7 +2,7 @@ const asyncHandler = require('express-async-handler');
 const Bed = require('../model/bed');
 const Patient = require('../model/patient');
 const Discharged = require('../model/discharge');
-//const Transfer = require('../model/transfer')
+const Transfer = require('../model/transfer')
 
 const logger = require('../logger');
 const moment=require('moment')
@@ -126,7 +126,7 @@ const Dash10 = asyncHandler(async (req, res) => {
   const patientFlow = [];
 
   // Find all transfer records
-  const transferRecords = await Transfer.f();
+  const transferRecords = await Transfer.find();
 
   // Create a map to store patient flow counts
   const patientFlowMap = {};

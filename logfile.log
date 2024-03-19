@@ -407,3 +407,131 @@
 2024-03-12T18:07:48.651Z - info: Server is running on port 4000
 2024-03-12T18:07:48.759Z - info: MongoDB connected
 2024-03-12T18:08:00.972Z - error: Invalid Patient Not Found
+2024-03-18T04:54:10.342Z - info: Server is running on port 4000
+2024-03-18T04:54:10.595Z - info: MongoDB connected
+2024-03-18T04:56:20.164Z - info: Server is running on port 4000
+2024-03-18T04:56:20.255Z - info: MongoDB connected
+2024-03-18T04:56:59.538Z - info: Server is running on port 4000
+2024-03-18T04:56:59.612Z - info: MongoDB connected
+2024-03-18T05:07:43.141Z - info: Server is running on port 4000
+2024-03-18T05:07:43.206Z - info: MongoDB connected
+2024-03-18T05:09:59.581Z - info: Server is running on port 4000
+2024-03-18T05:09:59.655Z - info: MongoDB connected
+2024-03-18T05:11:26.560Z - info: Server is running on port 4000
+2024-03-18T05:11:26.625Z - info: MongoDB connected
+2024-03-18T05:39:43.369Z - info: Server is running on port 4000
+2024-03-18T05:39:43.448Z - info: MongoDB connected
+2024-03-18T05:49:02.455Z - info: Server is running on port 4000
+2024-03-18T05:49:02.528Z - info: MongoDB connected
+2024-03-18T05:55:50.967Z - info: Server is running on port 4000
+2024-03-18T05:55:51.045Z - info: MongoDB connected
+2024-03-18T06:05:27.762Z - info: Server is running on port 4000
+2024-03-18T06:05:27.823Z - info: MongoDB connected
+2024-03-18T06:36:45.835Z - info: Server is running on port 4000
+2024-03-18T06:36:45.962Z - info: MongoDB connected
+2024-03-18T06:55:29.959Z - info: New entry created in waiting list
+2024-03-18T07:02:59.070Z - info: Server is running on port 4000
+2024-03-18T07:02:59.480Z - info: MongoDB connected
+2024-03-18T07:04:33.456Z - error: moment is not defined
+2024-03-18T07:07:17.196Z - info: Server is running on port 4000
+2024-03-18T07:07:17.346Z - info: MongoDB connected
+2024-03-18T07:07:35.052Z - error: next is not defined
+2024-03-18T07:08:29.285Z - info: Server is running on port 4000
+2024-03-18T07:08:29.428Z - info: MongoDB connected
+2024-03-18T07:08:34.990Z - error: Invalid admission date
+2024-03-18T07:11:18.269Z - info: Server is running on port 4000
+2024-03-18T07:11:18.378Z - info: MongoDB connected
+2024-03-18T07:11:24.182Z - error: Admission date must be a valid date
+2024-03-18T07:11:24.204Z - error: Invalid admission date
+2024-03-18T07:13:01.678Z - error: Invalid admission date
+2024-03-18T07:16:07.704Z - info: New entry created in waiting list
+2024-03-18T07:21:59.658Z - info: Server is running on port 4000
+2024-03-18T07:21:59.776Z - info: MongoDB connected
+2024-03-18T07:38:06.267Z - error: Bed is not defined
+2024-03-18T07:39:42.062Z - info: Server is running on port 4000
+2024-03-18T07:39:42.258Z - info: MongoDB connected
+2024-03-18T07:47:51.231Z - info: Server is running on port 4000
+2024-03-18T07:47:51.360Z - info: MongoDB connected
+2024-03-18T07:52:40.332Z - info: Server is running on port 4000
+2024-03-18T07:52:40.449Z - info: MongoDB connected
+2024-03-18T08:04:43.485Z - error: next is not defined
+2024-03-18T08:09:34.610Z - info: Server is running on port 4000
+2024-03-18T08:09:34.724Z - info: MongoDB connected
+2024-03-18T08:09:44.269Z - error: Bed is already occupied
+2024-03-18T08:10:22.415Z - error: Bed is already occupied
+2024-03-18T08:10:57.708Z - error: Bed is already occupied
+2024-03-18T08:51:33.155Z - error: Bed is already occupied
+2024-03-18T09:55:57.196Z - error: Bed is already occupied
+2024-03-18T10:35:25.875Z - error: Bed is already occupied
+2024-03-18T11:57:21.021Z - info: Server is running on port 4000
+2024-03-18T11:57:21.350Z - info: MongoDB connected
+2024-03-19T06:06:20.010Z - info: Server is running on port 4000
+2024-03-19T06:06:20.201Z - info: MongoDB connected
+2024-03-19T06:12:22.532Z - error: Invalid admission date
+2024-03-19T06:12:47.940Z - error: Ward or bed does not exist
+2024-03-19T06:12:47.943Z - error: Ward or bed does not exist
+2024-03-19T06:13:14.635Z - info: Patient admitted successfully
+2024-03-19T06:14:18.647Z - info: Server is running on port 4000
+2024-03-19T06:14:18.693Z - info: MongoDB connected
+2024-03-19T06:17:08.520Z - info: Server is running on port 4000
+2024-03-19T06:17:08.649Z - info: MongoDB connected
+2024-03-19T06:17:24.431Z - info: Patient admitted successfully
+2024-03-19T06:19:47.020Z - info: Server is running on port 4000
+2024-03-19T06:19:47.159Z - info: MongoDB connected
+2024-03-19T06:23:23.378Z - info: Server is running on port 4000
+2024-03-19T06:23:23.532Z - info: MongoDB connected
+2024-03-19T06:26:32.915Z - info: Server is running on port 4000
+2024-03-19T06:26:33.054Z - info: MongoDB connected
+2024-03-19T06:27:19.049Z - info: Patient admitted successfully
+2024-03-19T06:49:39.222Z - info: Server is running on port 4000
+2024-03-19T06:49:39.293Z - info: MongoDB connected
+2024-03-19T06:50:38.040Z - info: Server is running on port 4000
+2024-03-19T06:50:38.295Z - info: MongoDB connected
+2024-03-19T07:05:41.573Z - info: Server is running on port 4000
+2024-03-19T07:05:41.688Z - info: MongoDB connected
+2024-03-19T07:06:55.776Z - info: Server is running on port 4000
+2024-03-19T07:06:55.961Z - info: MongoDB connected
+2024-03-19T07:09:24.269Z - info: Server is running on port 4000
+2024-03-19T07:09:24.412Z - info: MongoDB connected
+2024-03-19T07:10:40.025Z - info: Server is running on port 4000
+2024-03-19T07:10:40.121Z - info: MongoDB connected
+2024-03-19T07:15:03.587Z - error: validResult is not a function
+2024-03-19T07:17:26.526Z - info: Server is running on port 4000
+2024-03-19T07:17:26.594Z - info: MongoDB connected
+2024-03-19T07:17:40.572Z - error: validResult is not a function
+2024-03-19T07:19:40.225Z - info: Server is running on port 4000
+2024-03-19T07:19:40.304Z - info: MongoDB connected
+2024-03-19T07:20:32.067Z - info: Server is running on port 4000
+2024-03-19T07:20:32.184Z - info: MongoDB connected
+2024-03-19T07:24:56.165Z - error: Current bed does not exist in the selected ward.
+2024-03-19T07:25:24.767Z - info: Patient transfer successful. Transfer bed marked as occupied.
+2024-03-19T07:27:12.318Z - info: Server is running on port 4000
+2024-03-19T07:27:12.448Z - info: MongoDB connected
+2024-03-19T07:34:58.339Z - info: Server is running on port 4000
+2024-03-19T07:34:58.432Z - info: MongoDB connected
+2024-03-19T07:35:29.223Z - info: Server is running on port 4000
+2024-03-19T07:35:29.311Z - info: MongoDB connected
+2024-03-19T07:41:22.984Z - info: Server is running on port 4000
+2024-03-19T07:41:23.158Z - info: MongoDB connected
+2024-03-19T07:42:38.355Z - info: Server is running on port 4000
+2024-03-19T07:42:38.535Z - info: MongoDB connected
+2024-03-19T07:53:41.350Z - info: Calculated Mortality Rate:
+2024-03-19T07:53:41.494Z - info: Patient discharged and bed record updated successfully.
+2024-03-19T08:22:54.013Z - info: Server is running on port 4000
+2024-03-19T08:22:54.091Z - info: MongoDB connected
+2024-03-19T08:51:46.504Z - info: Server is running on port 4000
+2024-03-19T08:51:46.639Z - info: MongoDB connected
+2024-03-19T08:56:28.741Z - info: Server is running on port 4000
+2024-03-19T08:56:28.806Z - info: MongoDB connected
+2024-03-19T10:01:16.163Z - info: Server is running on port 4000
+2024-03-19T10:01:16.403Z - info: MongoDB connected
+2024-03-19T10:02:01.201Z - info: Server is running on port 4000
+2024-03-19T10:02:01.286Z - info: MongoDB connected
+2024-03-19T10:05:30.453Z - info: Server is running on port 4000
+2024-03-19T10:05:30.568Z - info: MongoDB connected
+2024-03-19T10:06:51.314Z - info: Server is running on port 4000
+2024-03-19T10:06:51.408Z - info: MongoDB connected
+2024-03-19T11:06:48.540Z - info: Server is running on port 4000
+2024-03-19T11:06:48.652Z - info: MongoDB connected
+2024-03-19T12:59:14.207Z - info: Server is running on port 4000
+2024-03-19T12:59:14.381Z - info: MongoDB connected

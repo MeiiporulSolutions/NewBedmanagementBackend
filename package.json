@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"nodemon index.js"
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "start": "nodemon index.js"
   },
   "author": "",
   "license": "ISC",
@@ -13,6 +15,7 @@
     "dotenv": "^16.4.5",
     "express": "^4.18.2",
     "express-async-handler": "^1.2.0",
+    "express-validator": "^7.0.1",
     "joi": "^17.12.2",
     "moment": "^2.30.1",
     "mongoose": "^8.2.0",
@@ -20,5 +23,8 @@
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.0",
     "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0"
   }
 }

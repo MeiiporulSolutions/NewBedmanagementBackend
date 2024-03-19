@@ -1,8 +1,6 @@
-const express = require('express');
-const router = express.Router();
-const moment = require('moment');
 const Bed = require('../model/bed');
 const Discharged = require('../model/discharge');
+const {validationResult} = require('express-validator')
 const Patient = require('../model/patient');
 const asyncHandler = require('express-async-handler');
 const logger = require('../logger');
@@ -118,7 +116,13 @@ const generateDischargeId = () => `Dsh-${generateDischargeString(4)}`; // Adjust
  */
 
 // Function to discharge a patient
-const dischargePatient = asyncHandler(async (req, res,next) => {
+const dischargePatient = asyncHandler(async (req, res) => {
+
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+  }
+
   const {
     patientId,
     patientName,

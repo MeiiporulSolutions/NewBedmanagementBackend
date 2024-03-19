@@ -128,7 +128,7 @@ function adjustAdmissionTime(currentTime) {
  *                   example: Failed to retrieve ward occupancy data.
  */
 
-const wardOccup = async (req, res, next) => {
+const wardOccup = async (req, res) => {
     const occupiedWards = await Bed.find({ 'wards.beds.status': 'occupied' });
 
     if (!occupiedWards || occupiedWards.length === 0) {
@@ -153,7 +153,7 @@ const wardOccup = async (req, res, next) => {
 };
 
 //dashboard 3:
-const availablebed = async (req, res, next) => {
+const availablebed = async (req, res) => {
      
         const availableWards = await Bed.find({ 'wards.beds.status': 'available' });
 
@@ -358,7 +358,7 @@ const getAdmissionDischarge = async (req, res) => {
  */
 
 
-const patientCare = asyncHandler(async (req, res, next) => {
+const patientCare = asyncHandler(async (req, res) => {
     const patientsData = await Patient.find();
     if (patientsData.length > 0) {
         const formattedData = patientsData.map(patient => ({

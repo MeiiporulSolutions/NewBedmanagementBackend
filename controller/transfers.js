@@ -1,9 +1,8 @@
 const asyncHandler = require('express-async-handler');
-const moment = require('moment');
 const Transfer = require('../model/transfer');
 const Bed = require('../model/bed');
-const errorHandler = require('../middleware/errorhandler');
 const logger = require('../logger'); // Assuming the logger is defined in a separate file
+const { validationResult } = require('express-validator');
 
 /**
  * @swagger
@@ -109,7 +108,13 @@ const generateRandomStrings = (length) => {
 const generateTransID = () => `TAT-${generateRandomStrings(4)}`; // Adjust the length as needed
 
 const transferPatient = asyncHandler(async (req, res, next) => {
-    const {
+
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+  }
+
+   const {
       currentWardId,
       currentBedNumber,
       patientName,
@@ -204,7 +209,7 @@ const transferPatient = asyncHandler(async (req, res, next) => {
 });
 
 //get transfer:
-const transferGet = asyncHandler(async (req, res, next) => {
+const transferGet = asyncHandler(async (req, res) => { 
   const transferBeds = await Transfer.find();
   if (transferBeds.length > 0) {
       res.json(transferBeds);
@@ -213,4 +218,5 @@ const transferGet = asyncHandler(async (req, res, next) => {
       throw new Error("Invalid Patient Not Found");
   }
 });
+
 module.exports = { transferPatient, transferGet };

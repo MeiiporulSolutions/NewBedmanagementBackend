@@ -67,7 +67,7 @@ const logger = require('../logger'); // Assuming the logger is defined in a sepa
  *                   type: string
  *                   example: Failed to add beds to the ward
  */
-const addBeds = asyncHandler(async (req, res,next) => {
+const addBeds = asyncHandler(async (req, res, next) => {
     const { wardName, wardId, wardType, bedNumber } = req.body;
 
     // Find the existing ward by its wardId and wardType
@@ -125,7 +125,7 @@ const addBeds = asyncHandler(async (req, res,next) => {
         return next({ statusCode: 404, message: "Invalid bed count found" });
     }
 });
-const bedGet = asyncHandler(async (req, res, next) => {
+const bedGet = asyncHandler(async (req, res) => {
     const bedss = await Bed.find();
     if (bedss.length > 0) {
         res.json(bedss);
